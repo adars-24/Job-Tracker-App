@@ -33,6 +33,7 @@ const Dashboard = () => {
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [bookmarkedIds, setBookmarkedIds] = useState<Set<string>>(new Set());
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   // Filters
   const [search, setSearch] = useState<string>("");
@@ -317,7 +318,20 @@ const Dashboard = () => {
 
   return (
     <div className="app-layout">
-      <Sidebar />
+      <header className="topbar">
+        <button
+          className="hamburger-btn"
+          onClick={() => setSidebarOpen((prev) => !prev)}
+        >
+          ☰
+        </button>
+        <span className="topbar-logo">📋 JobTracker</span>
+        <div className="topbar-actions">
+         
+        </div>
+      </header>
+
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <main className="main-content">
         {/* Header */}
         <div className="page-header">
