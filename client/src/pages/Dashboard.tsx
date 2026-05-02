@@ -441,41 +441,45 @@ const Dashboard = () => {
         </div>
 
         {/* Date range */}
-        <div className="filters-bar" style={{ marginTop: "-8px" }}>
-          <input
-            type="date"
-            className="filter-select"
-            value={dateFrom}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setDateFrom(e.target.value)
-            }
-            title="From date"
-          />
-          <input
-            type="date"
-            className="filter-select"
-            value={dateTo}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setDateTo(e.target.value)
-            }
-            title="To date"
-          />
-          {isFiltered && (
-            <button
-              className="export-btn"
-              onClick={() => {
-                setSearch("");
-                setStatusFilter("All");
-                setSortBy("latest");
-                setDateFrom("");
-                setDateTo("");
-                setSalaryFilter("All");
-              }}
-            >
-              ✕ Clear Filters
-            </button>
-          )}
-        </div>
+<div className="filters-bar" style={{ marginTop: "-8px" }}>
+  <div className="date-filter-group">
+    <label className="date-filter-label">From</label>
+    <input
+      type="date"
+      className="filter-select"
+      value={dateFrom}
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        setDateFrom(e.target.value)
+      }
+    />
+  </div>
+  <div className="date-filter-group">
+    <label className="date-filter-label">To</label>
+    <input
+      type="date"
+      className="filter-select"
+      value={dateTo}
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        setDateTo(e.target.value)
+      }
+    />
+  </div>
+  {isFiltered && (
+    <button
+      className="export-btn"
+      onClick={() => {
+        setSearch("")
+        setStatusFilter("All")
+        setSortBy("latest")
+        setDateFrom("")
+        setDateTo("")
+        setSalaryFilter("All")
+      }}
+    >
+      ✕ Clear
+    </button>
+  )}
+</div>
 
         {/* Table */}
         <div className="table-container">
